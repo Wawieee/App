@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Student Information System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">Simple Student Information System</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <h2>Add Course</h2>
+                    <form id="add-course-form">
+                        <div class="form-group">
+                            <label for="course_name">Course Name:</label>
+                            <input type="text" class="form-control" id="course_name" name="course_name" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Course</button>
+                    </form>
+                </div>
+                
+                <div class="mb-4">
+                    <h2>Update Course</h2>
+                    <form id="update-course-form">
+                        <div class="form-group">
+                            <label for="update_student_id">Course ID:</label>
+                            <input type="number" class="form-control" id="update_course_id" name="update_course_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="update_course_name">New Course Name:</label>
+                            <input type="text" class="form-control" id="update_course_name" name="update_course_name" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Course</button>
+                    </form>
+                </div>
+
+                <div class="mb-4">
+                    <h2>Delete Course</h2>
+                    <form id="delete-course-form">
+                        <div class="form-group">
+                            <label for="delete_course_id">Course ID:</label>
+                            <input type="number" class="form-control" id="delete_course_id" name="delete_course_id" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Delete Course</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <h2>All Courses</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Course ID</th>
+                                <th>Course Name</th>
+                            </tr>
+                        </thead>
+                        <tbody id="course-list">
+                            <!-- Course list will be populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mb-4">
+                    <h2>Search Courses</h2>
+                    <form id="delete-course-form">
+                        <div class="form-group">
+                            <label for="delete_course_id">Course ID:</label>
+                            <input type="number" class="form-control" id="search_course_id" name="search_course_id" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <h2>Add Student</h2>
+                    <form id="add-student-form">
+                        <div class="form-group">
+                            <label for="student_name">Student Name:</label>
+                            <input type="text" class="form-control" id="student_name" name="student_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course_id">Course ID:</label>
+                            <input type="number" class="form-control" id="course_id" name="course_id" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Student</button>
+                    </form>
+                </div>
+                
+                <div class="mb-4">
+                    <h2>Update Student</h2>
+                    <form id="update-student-form">
+                        <div class="form-group">
+                            <label for="update_student_id">Student ID:</label>
+                            <input type="number" class="form-control" id="update_student_id" name="update_student_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="update_student_name">New Student Name:</label>
+                            <input type="text" class="form-control" id="update_student_name" name="update_student_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="update_course_id">New Course ID:</label>
+                            <input type="number" class="form-control" id="update_course_id" name="update_course_id" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Student</button>
+                    </form>
+                </div>
+
+                <div class="mb-4">
+                    <h2>Delete Student</h2>
+                    <form id="delete-student-form">
+                        <div class="form-group">
+                            <label for="delete_student_id">Student ID:</label>
+                            <input type="number" class="form-control" id="delete_student_id" name="delete_student_id" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Delete Student</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <h2>All Students</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Course</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-list">
+                            <!-- Student list will be populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mb-4">
+                    <h2>Search Students</h2>
+                    <form id="delete-student-form">
+                        <div class="form-group">
+                            <label for="delete_student_id">Student ID:</label>
+                            <input type="number" class="form-control" id="search_student_id" name="search_student_id" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function getAllCourses() {
+            fetch('/courses')
+            .then(response => response.json())
+            .then(data => {
+                const courseList = document.getElementById('course-list');
+                courseList.innerHTML = '';
+                data.Message.forEach(course => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${course.course_id}</td>
+                        <td>${course.course_name}</td>
+                    `;
+                    courseList.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function getAllStudents() {
+            fetch('/students')
+            .then(response => response.json())
+            .then(data => {
+                const studentList = document.getElementById('student-list');
+                studentList.innerHTML = '';
+                data.Message.forEach(student => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${student.student_id}</td>
+                        <td>${student.student_name}</td>
+                        <td>${student.course_name}</td>
+                    `;
+                    studentList.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        getAllStudents();
+        getAllCourses();
+
+        document.getElementById('add-course-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/addcourse', {
+                method: 'POST',
+                body: JSON.stringify(Object.fromEntries(formData)),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+            getAllCourses();
+        });
+
+        document.getElementById('add-student-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const studentData = {};
+            formData.forEach(function(value, key){
+                studentData[key] = value;
+            });
+            fetch('/student', {
+                method: 'POST',
+                body: JSON.stringify(studentData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+            getAllStudents();
+        });     
+
+        document.getElementById('update-course-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch(`/updatecourse/${formData.get('update_course_id')}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    course_name: formData.get('update_course_name'),
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+            getAllCourses();
+        });
+
+        document.getElementById('update-student-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch(`/updatestudent/${formData.get('update_student_id')}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    student: formData.get('update_student_name'),
+                    course_id: formData.get('update_course_id')
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+            getAllStudents();
+        });
+
+        document.getElementById('delete-student-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch(`/student/${formData.get('delete_student_id')}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+            getAllStudents();
+        });
+
+        document.getElementById('delete-course-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch(`/deletecourse/${formData.get('delete_course_id')}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+            getAllCourses();
+        });
+
+        document.getElementById('search-course-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const courseId = document.getElementById('search_course_id').value;
+            fetch(`/getcourse/${courseId}`)
+            .then(response => response.json())
+            .then(data => {
+                const courseList = document.getElementById('course-list');
+                courseList.innerHTML = '';
+                data.Message.forEach(course => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${course.course_id}</td>
+                        <td>${course.course_name}</td>
+                    `;
+                    courseList.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Add event listener for searching students
+        document.getElementById('search-student-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const studentId = document.getElementById('search_student_id').value;
+            fetch(`/student/${studentId}`)
+            .then(response => response.json())
+            .then(data => {
+                const studentList = document.getElementById('student-list');
+                studentList.innerHTML = '';
+                data.Message.forEach(student => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${student.student_id}</td>
+                        <td>${student.student_name}</td>
+                        <td>${student.course_id}</td>
+                    `;
+                    studentList.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
